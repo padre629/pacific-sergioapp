@@ -1,0 +1,7 @@
+all:
+  doctrine:
+    class: sfDoctrineDatabase
+    param:
+      dsn: 'pgsql:host=192.168.0.101;dbname=sergio_bd2'
+      username: phs-adm
+      password: phs-adm
