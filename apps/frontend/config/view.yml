@@ -6,10 +6,10 @@ default:
     content-type: text/html
 
   metas:
-    #title:        symfony project
-    #description:  symfony project
+    title:        SergioApp / Pacific
+    description:  Segundo proyecto
     #keywords:     symfony, project
-    #language:     en
+    language:     es
     #robots:       index, follow
 
   stylesheets:    [main.css]

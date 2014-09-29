@@ -5,10 +5,13 @@ prod:
   .settings:
     no_script_name:         true
     logging_enabled:        false
+    #configurar la pagina 404 personalizada
+    error_404_module:       contenido
+    error_404_action:       error404
 
 dev:
   .settings:
-    error_reporting:        <?php echo (E_ALL | E_STRICT)."\n" ?>
+    error_reporting:        <?php echo ((E_ALL | E_STRICT) ^ E_DEPRECATED)."\n" ?>
     web_debug:              true
     cache:                  false
     no_script_name:         false
