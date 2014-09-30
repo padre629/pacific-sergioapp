@@ -1,9 +1,9 @@
 <!-- archivo ejecutado gracias a -->
 <!-- ../actions/actions.class.php:executeIndex -->
 
-BIENVENIDOS A PACIFIC HS
+BIENVENIDOS A PACIFIC
 <br>
-INGRESE SUS DATOS PARA INICIAR
+QUE GRANDIOSO DIA PARA SERVIRLE
 
 <form method="post" action="">
     <input type="text" name="usuario" placeholder="usuario" />

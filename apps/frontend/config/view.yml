@@ -18,3 +18,7 @@ default:
 
   has_layout:     true
   layout:         layout
+
+verSuccess:
+  metas:
+    title:        Ver / Pacific

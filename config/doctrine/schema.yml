@@ -1,0 +1,33 @@
+#esquema de la BD
+blog_articulo:
+    actAs: [Timestampable]
+    tableName: blog_articulo
+    columns:
+        id:
+            type:           integer
+            primary:        true
+            autoincrement:  true
+        titulo:
+            type:           string(255)
+        contenido: clob
+
+blog_comentario:
+    actAs: [Timestampable]
+    tableName: blog_comentario
+    columns:
+        id:
+            type:           integer
+            primary:        true
+            autoincrement:  true
+        titulo:
+            type:           string(255)
+        blog_articulo_id: 
+            type:           integer
+        autor: 
+            type:           string(255)
+        contenido:
+            type:           clob
+    relations: 
+        blog_articulo:
+            onDelete:       CASCADE
+            foreignAlias:   Comentarios

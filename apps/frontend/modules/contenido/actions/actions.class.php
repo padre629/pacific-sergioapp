@@ -34,6 +34,7 @@ class contenidoActions extends sfActions
         if ($this->user != "") {
             $this->getUser()->setAttribute("usuariologueado", 
                 $this->user);
+            $this->getUser()->setAuthenticated(true);
             $this->redirect('contenido/ver');
             //$this->forward("contenido", "ver");
         }
@@ -62,6 +63,18 @@ class contenidoActions extends sfActions
             //en settings.yml se define que vista será 
             //la del 404
         }
+        //traer en un array todos los datos de la 
+        //tabla blog_articulos, es una especie  de
+        //mysql fetch array
+        $this->listaArticulos = Doctrine_Core::getTable("blog_articulo")
+            ->createQuery()
+            ->execute();
+        /*$this->arrListaTitulos = array();
+        $this->arrListaCont = array();
+        foreach ($this->listaArticulos as $lista) {
+            $this->arrListaTitulos[$lista->getId()] = $lista->getTitulo();
+            $this->arrListaCont[$lista->getId()] = $lista->getContenido();
+        }*/
     }
   }
 
@@ -69,9 +82,17 @@ class contenidoActions extends sfActions
     //backend para el archivo frontend
     // ../templates/recibirnombreSuccess.php
     //recuperar datos de la peticion dentro de una acción
-    $this->nombre = $request->getParameter("nombre");
-    $this->direccion = $request->getParameter("direccion");
-    $this->telefono = $request->getParameter("telefono");
+    //$this->nombre = $request->getParameter("nombre");
+    //$this->direccion = $request->getParameter("direccion");
+    //$this->telefono = $request->getParameter("telefono");
+    $this->titulo = $request->getParameter("titulo");
+    $this->contenido = $request->getParameter("contenido");
+    //ahora guardar en la BD
+    $articulo = new blog_articulo();
+    $articulo->setTitulo($this->titulo);
+    $articulo->setContenido($this->contenido);
+    $articulo->save();
+    $this->redirect('contenido/ver');
   }
 
   public function executeError404() {
@@ -82,6 +103,7 @@ class contenidoActions extends sfActions
     //cerrar la sesion e ir al index
     $this->getUser()->getAttributeHoldeR()->remove("usuariologueado");
     $this->getUser()->getAttributeHoldeR()->clear();
+    $this->getUser()->setAuthenticated(false);
     $this->redirect('contenido/index');
   }
 }

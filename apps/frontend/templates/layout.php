@@ -9,6 +9,8 @@
     <?php include_javascripts() ?>
   </head>
   <body>
+    <h1> INICIO </h1>
     <?php echo $sf_content ?>
+    <h1> <?php include_partial("elemparcial") ?> </h1>
   </body>
 </html>
