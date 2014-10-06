@@ -16,39 +16,75 @@ BIENVENIDO/A <br>
 
 <!-- <br> <br> -->
 
-<!-- <?php
-    echo link_to("busca en google", 
+<?php
+    /*echo link_to("busca en google", 
         "http://www.google.com.co", 
         "style='color: red;' confirm=seguro? absolute=true");
     echo "<br>";
-    echo link_to("ir al inicio", "/");
-?> -->
+    echo link_to("ir al inicio", "/"); */
+?>
 
-<br><br> INSERTAR ARTICULOS <br>
-<form method="post" action="recibirnombre">
-    <!-- <input type="text" name="nombre" placeholder="nombre" />
-    <input type="text" name="direccion" placeholder="direccion" />
-    <input type="text" name="telefono" placeholder="telefono" />-->
-    <input type="text" name="titulo" placeholder="titulo" />
-    <textarea name="contenido" style="margin-bottom: -6px;"></textarea>
-    <input type="submit" value="envia datos" />
+<br><br> <b>INSERTAR ARTICULOS</b> <br>
+
+<form method="post" 
+    action="<?php echo url_for('@ver_todos_los_articulos'); ?>">
+    <!-- <?php echo $formRegArt; ?> -->
+    <div style="width: 31em; background: #f3f3f4; overflow: auto;">
+        <?php if ($formRegArt->isCSRFProtected()) : ?>
+            <?php echo $formRegArt['_csrf_token']->render(); ?>
+        <?php endif; ?> 
+        <div style="border: 1px solid gray; float: left; width: 10em;">
+            <div>
+                <B> <?php 
+                    echo $formRegArt['titulo']->renderLabel(); ?> 
+                </B> 
+            </div> <br>
+            <div> <?php 
+                echo $formRegArt['titulo']->render(); ?> 
+            </div>
+            <div style="color: red;"> <?php 
+                echo $formRegArt['titulo']->renderError(); ?> 
+            </div>
+        </div>
+        <div style="border: 1px solid gray; float: left; width: 10em;">
+            <div>
+                <B> <?php 
+                    echo $formRegArt['contenido']->renderLabel(); ?> 
+                </B> 
+            </div> <br>
+            <div> <?php 
+                echo $formRegArt['contenido']->render(); ?> 
+            </div>
+            <div  style="color: red;"> <?php 
+                echo $formRegArt['contenido']->renderError(); ?> 
+            </div>
+        </div>
+        <div style="border: 1px solid gray; float: left; width: 10em;">
+            <input type="submit" value="envia datos" />
+        </div>
+    </div>
 </form>
 
-<br> <br>
+
+
+<?php /*echo $formRegArt->renderFormTag(url_for('@'));*/ ?>
+
+
+
+
+
+<br> <br> <b>ARTICULOS REGISTRADOS</b> <br>
 <!-- <?php echo $marquita; ?> -->
 <table>
     <tr>
         <td style="font-weight: bold;"> ID </td>
         <td style="font-weight: bold;"> TITULO </td>
-        <td style="font-weight: bold;"> CONTENIDO </td>
-        <td style="font-weight: bold;"> CREADO </td>
     </tr>
     <?php foreach ($listaArticulos as $lista): ?>
         <tr>
             <td> <?php echo $lista->getId(); ?> </td>
-            <td> <?php echo $lista->getTitulo(); ?> </td>
-            <td> <?php echo $lista->getContenido(); ?> </td>
-            <td> <?php echo $lista->getCreatedAt(); ?> </td>
+            <td> <?php echo link_to($lista->getTitulo(), url_for('@articulo_segun_id?id='.$lista->getId())); ?> </td>
+            <!-- <td> <a href="<?php echo url_for('contenido/verarticulo?id='.$lista->getId()) ?>">  -->
         </tr>
     <?php endforeach; ?>
 </table>

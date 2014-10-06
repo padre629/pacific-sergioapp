@@ -8,9 +8,35 @@ homepage:
 
 # generic rules
 # please, remove them by adding more specific rules
-default_index:
-  url:   /:module
-  param: { action: index }
+#default_index:
+  #url:   /:module
+  #param: { action: index }
 
-default:
-  url:   /:module/:action/*
+#default:
+  #url:   /:module/:action/*
+
+index:
+  url:   contenido
+  param: { module: contenido, action: index }
+
+verifica_index:
+  url:   /contenido/verificaindex
+  param: { module: contenido, action: verificaindex }
+
+ver_todos_los_articulos:
+  url:   /contenido/ver
+  param: { module: contenido, action: ver }
+
+articulo_segun_id:
+  #convertir la url: /contenido/verarticulo/id/:id
+  url:   /contenido/ver/:id
+  param: { module: contenido, action: verarticulo }
+  requirements: { id: \d+ }
+
+registrar_articulo:
+  url:   contenido/recibirnombre
+  param: { module: contenido, action: recibirnombre }
+
+cerrar_sesion:
+  url:   contenido/cierresesion
+  param: { module: contenido, action: cierresesion }

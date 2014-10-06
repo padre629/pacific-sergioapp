@@ -7,4 +7,5 @@
 all:
     #variable(s) accesible(s) solo estando en el 
     #entorno dev (desarrollo)
-    marca: general electric
+    marca:           general electriC
+    titulopagina:    titulo

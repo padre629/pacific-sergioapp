@@ -22,3 +22,7 @@ default:
 verSuccess:
   metas:
     title:        Ver / Pacific
+
+verarticuloSuccess:
+  metas: 
+    title:        %APP_TITULOPAGINA%

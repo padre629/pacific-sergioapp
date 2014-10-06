@@ -9,8 +9,11 @@
     <?php include_javascripts() ?>
   </head>
   <body>
-    <h1> INICIO </h1>
+    <h1> 
+      <?php echo image_tag('pacific.jpg', "size=140x45"); ?>
+    </h1>
     <?php echo $sf_content ?>
-    <h1> <?php include_partial("elemparcial") ?> </h1>
+    <h2> <!-- <?php include_partial("elemparcial") ?> --> 
+    Copyrigth 2014 - PACIFIC HS </h2>
   </body>
 </html>
